@@ -1,0 +1,81 @@
+[ ec2-user@dispatch ~ ]$ echo $?
+0
+
+[ ec2-user@dispatch ~ ]$ ls -l /opt /opt1
+ls: cannot access '/opt1': No such file or directory
+/opt:
+total 0
+drwxr-xr-x. 4 root root 33 Feb 22  2024 aws
+
+[ ec2-user@dispatch ~ ]$ echo $?
+2
+
+[ ec2-user@dispatch ~ ]$ cd frontend-shell/
+
+[ ec2-user@dispatch ~/frontend-shell ]$ ls >/tmp/out
+
+[ ec2-user@dispatch ~/frontend-shell ]$ cat /tmp/out
+Frontend.sh
+cart.service
+cart.sh
+catalogue.service
+catalogue.sh
+common.sh
+dispatch.service
+dispatch.sh
+function.sh
+mongodb.repo
+mongodb.sh
+mysql.sh
+nginx.conf
+payment.service
+payment.sh
+rabbitmq.repo
+rabbitmq.sh
+redis.sh
+shipping.service
+shipping.sh
+user.service
+user.sh
+
+[ ec2-user@dispatch ~/frontend-shell ]$ ls -l /opt/ /opt1 >/tmp/out
+ls: cannot access '/opt1': No such file or directory
+
+[ ec2-user@dispatch ~/frontend-shell ]$ ls -l /opt/ /opt1 >/tmp/out 2>/tmp/err
+
+[ ec2-user@dispatch ~/frontend-shell ]$ cat /tmp/out
+/opt/:
+total 0
+drwxr-xr-x. 4 root root 33 Feb 22  2024 aws
+
+[ ec2-user@dispatch ~/frontend-shell ]$ cat /tmp/err
+ls: cannot access '/opt1': No such file or directory
+
+[ ec2-user@dispatch ~/frontend-shell ]$ ls -l /opt/ /opt1 &>/tmp/all
+
+[ ec2-user@dispatch ~/frontend-shell ]$ cat /tmp/all
+ls: cannot access '/opt1': No such file or directory
+/opt/:
+total 0
+drwxr-xr-x. 4 root root 33 Feb 22  2024 aws
+
+[ ec2-user@dispatch ~/frontend-shell ]$ ls -l /opt/ /opt1 &>/tmp/all
+
+[ ec2-user@dispatch ~/frontend-shell ]$ cat /tmp/all
+ls: cannot access '/opt1': No such file or directory
+/opt/:
+total 0
+drwxr-xr-x. 4 root root 33 Feb 22  2024 aws
+
+[ ec2-user@dispatch ~/frontend-shell ]$ echo Hello &>/tmp/all
+
+[ ec2-user@dispatch ~/frontend-shell ]$ cat /tmp/all
+Hello
+
+[ ec2-user@dispatch ~/frontend-shell ]$ echo Hello &>>/tmp/all
+
+[ ec2-user@dispatch ~/frontend-shell ]$ cat /tmp/all
+Hello
+Hello
+
+[ ec2-user@dispatch ~/frontend-shell ]$
